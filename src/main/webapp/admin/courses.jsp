@@ -1,0 +1,153 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manage Courses - Student Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/dashboard">
+                    <span class="glyphicon glyphicon-education"></span> SMS
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="${pageContext.request.contextPath}/dashboard">Dashboard</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/students">Students</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/admin/courses">Courses</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/users">Users</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>
+                            ${sessionScope.username}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="${pageContext.request.contextPath}/logout">
+                                <span class="glyphicon glyphicon-log-out"></span> Logout
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span class="glyphicon glyphicon-book"></span> Manage Courses</h2>
+                <hr>
+
+                <!-- Messages -->
+                <c:if test="${param.success == 'created'}">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        Course created successfully!
+                    </div>
+                </c:if>
+                <c:if test="${param.success == 'updated'}">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        Course updated successfully!
+                    </div>
+                </c:if>
+                <c:if test="${param.success == 'deleted'}">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        Course deleted successfully!
+                    </div>
+                </c:if>
+
+                <!-- Add Button -->
+                <div class="row mb-20">
+                    <div class="col-md-12 text-right">
+                        <a href="${pageContext.request.contextPath}/admin/course/new" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-plus"></span> Add New Course
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Courses Table -->
+                <div class="panel panel-custom">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Courses List</h3>
+                    </div>
+                    <table class="table table-custom table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Course Code</th>
+                                <th>Course Name</th>
+                                <th>Credits</th>
+                                <th>Faculty</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="course" items="${courses}" varStatus="status">
+                                <tr>
+                                    <td>${status.index + 1}</td>
+                                    <td><strong>${course.courseCode}</strong></td>
+                                    <td>${course.courseName}</td>
+                                    <td>${course.credits}</td>
+                                    <td>${course.facultyName != null ? course.facultyName : 'Not Assigned'}</td>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/admin/course/view?id=${course.courseId}"
+                                           class="btn btn-info btn-xs" title="View Enrollments">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a href="${pageContext.request.contextPath}/admin/course/edit?id=${course.courseId}"
+                                           class="btn btn-warning btn-xs" title="Edit">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                        <a href="${pageContext.request.contextPath}/admin/course/delete?id=${course.courseId}"
+                                           class="btn btn-danger btn-xs" title="Delete"
+                                           onclick="return confirm('Are you sure you want to delete this course?');">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            <c:if test="${empty courses}">
+                                <tr>
+                                    <td colspan="6" class="text-center">No courses found.</td>
+                                </tr>
+                            </c:if>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <p>Student Management System &copy; 2018</p>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
