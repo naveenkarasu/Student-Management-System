@@ -24,20 +24,20 @@ export function Header({ onToggleSidebar }: HeaderProps) {
     : 'success' as const;
 
   return (
-    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b border-slate-200 bg-white px-4 lg:px-6">
+    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b border-primary-100 bg-white px-4 lg:px-6">
       <button
         onClick={onToggleSidebar}
-        className="lg:hidden rounded-md p-2 hover:bg-purple-50"
+        className="lg:hidden rounded-md p-2 hover:bg-primary-50 text-primary-700"
       >
         <Menu className="h-5 w-5" />
       </button>
 
       <div className="flex items-center gap-2">
         <GraduationCap className="h-6 w-6 text-primary-600" />
-        <span className="text-lg font-semibold text-slate-900 hidden sm:inline">
+        <span className="text-lg font-semibold text-primary-950 hidden sm:inline">
           Student Management System
         </span>
-        <span className="text-lg font-semibold text-slate-900 sm:hidden">
+        <span className="text-lg font-semibold text-primary-950 sm:hidden">
           SMS
         </span>
       </div>
@@ -46,14 +46,14 @@ export function Header({ onToggleSidebar }: HeaderProps) {
         {user && (
           <>
             <div className="hidden sm:flex items-center gap-2">
-              <span className="text-sm text-slate-600">
+              <span className="text-sm text-primary-800">
                 {user.username}
               </span>
               <Badge variant={roleBadgeVariant}>
                 {user.role}
               </Badge>
             </div>
-            <Button variant="ghost" size="sm" onClick={handleLogout}>
+            <Button variant="ghost" size="sm" onClick={handleLogout} className="text-primary-700 hover:text-primary-900">
               <LogOut className="h-4 w-4 mr-2" />
               Logout
             </Button>

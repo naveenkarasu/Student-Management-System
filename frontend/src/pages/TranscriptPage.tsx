@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Loading } from '@/components/ui/loading';
 import { useToast } from '@/components/ui/toast';
 import { Download, FileText } from 'lucide-react';
+import { TranscriptScroll3D } from '@/components/three/TranscriptScroll3D';
 import { demoUsers } from '@/mocks/data';
 
 export function TranscriptPage() {
@@ -48,10 +49,12 @@ export function TranscriptPage() {
 
   return (
     <div className="space-y-6">
+      <TranscriptScroll3D />
+
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Academic Transcript</h1>
-          <p className="text-slate-600">View and download your official academic transcript.</p>
+          <h1 className="text-2xl font-bold text-primary-950">Academic Transcript</h1>
+          <p className="text-primary-600">View and download your official academic transcript.</p>
         </div>
         <Button onClick={handleDownload} disabled={downloading}>
           <Download className="h-4 w-4 mr-2" />
@@ -83,7 +86,7 @@ export function TranscriptPage() {
               return (
                 <div key={semester}>
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg font-semibold text-slate-900">{semester}</h3>
+                    <h3 className="text-lg font-semibold text-primary-950">{semester}</h3>
                     <Badge variant="secondary">
                       Semester GPA: {semGpa.toFixed(2)}
                     </Badge>
@@ -129,25 +132,25 @@ export function TranscriptPage() {
             })}
 
             {semesters.length === 0 && (
-              <p className="text-center text-slate-500 py-8">
+              <p className="text-center text-primary-500 py-8">
                 No academic records available yet.
               </p>
             )}
 
             {gpa && semesters.length > 0 && (
-              <div className="mt-6 rounded-lg bg-purple-50/30 p-4">
+              <div className="mt-6 rounded-lg bg-primary-50 p-4 border border-primary-100">
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <p className="text-sm text-slate-600">Cumulative GPA</p>
-                    <p className="text-2xl font-bold text-slate-900">{gpa.gpa.toFixed(2)}</p>
+                    <p className="text-sm text-primary-600">Cumulative GPA</p>
+                    <p className="text-2xl font-bold text-primary-950">{gpa.gpa.toFixed(2)}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-slate-600">Total Credits</p>
-                    <p className="text-2xl font-bold text-slate-900">{gpa.totalCredits}</p>
+                    <p className="text-sm text-primary-600">Total Credits</p>
+                    <p className="text-2xl font-bold text-primary-950">{gpa.totalCredits}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-slate-600">Total Grade Points</p>
-                    <p className="text-2xl font-bold text-slate-900">{gpa.totalGradePoints.toFixed(1)}</p>
+                    <p className="text-sm text-primary-600">Total Grade Points</p>
+                    <p className="text-2xl font-bold text-primary-950">{gpa.totalGradePoints.toFixed(1)}</p>
                   </div>
                 </div>
               </div>

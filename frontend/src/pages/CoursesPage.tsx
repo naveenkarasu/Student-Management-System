@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Loading } from '@/components/ui/loading';
 import { useToast } from '@/components/ui/toast';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
+import { CourseGrid3D } from '@/components/three/CourseGrid3D';
 import type { Course, CourseCreateRequest } from '@/types';
 
 interface CourseFormProps {
@@ -185,10 +186,12 @@ export function CoursesPage() {
 
   return (
     <div className="space-y-6">
+      <CourseGrid3D />
+
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Courses</h1>
-          <p className="text-slate-600">
+          <h1 className="text-2xl font-bold text-primary-950">Courses</h1>
+          <p className="text-primary-600">
             {isAdmin ? 'Manage courses in the system.' : 'View available courses.'}
           </p>
         </div>
@@ -244,7 +247,7 @@ export function CoursesPage() {
               ))}
               {(!courses || courses.length === 0) && (
                 <TableRow>
-                  <TableCell colSpan={isAdmin ? 7 : 6} className="text-center text-slate-500">
+                  <TableCell colSpan={isAdmin ? 7 : 6} className="text-center text-primary-500">
                     No courses found.
                   </TableCell>
                 </TableRow>

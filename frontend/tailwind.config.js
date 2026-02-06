@@ -6,7 +6,32 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      },
       colors: {
+        border: "hsl(var(--border, 263 20% 88%))",
+        input: "hsl(var(--input, 263 20% 88%))",
+        ring: "hsl(var(--ring, 263 70% 58%))",
+        background: "hsl(var(--background, 270 100% 99%))",
+        foreground: "hsl(var(--foreground, 274 96% 14%))",
+        surface: "hsl(var(--surface, 270 100% 99%))",
+        muted: {
+          DEFAULT: "hsl(var(--muted, 270 50% 96%))",
+          foreground: "hsl(var(--muted-foreground, 220 9% 46%))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card, 0 0% 100%))",
+          foreground: "hsl(var(--card-foreground, 274 96% 14%))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive, 343 81% 53%))",
+          foreground: "hsl(var(--destructive-foreground, 270 100% 99%))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary, 270 50% 96%))",
+          foreground: "hsl(var(--secondary-foreground, 274 96% 14%))",
+        },
         primary: {
           50: '#faf5ff',
           100: '#f3e8ff',

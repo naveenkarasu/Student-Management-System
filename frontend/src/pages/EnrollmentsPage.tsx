@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { Loading } from '@/components/ui/loading';
 import { useToast } from '@/components/ui/toast';
 import { Plus, Trash2, Search } from 'lucide-react';
+import { EnrollmentFlow3D } from '@/components/three/EnrollmentFlow3D';
 
 export function EnrollmentsPage() {
   const { data: students, isLoading: loadingStudents } = useStudents();
@@ -79,10 +80,12 @@ export function EnrollmentsPage() {
 
   return (
     <div className="space-y-6">
+      <EnrollmentFlow3D />
+
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Enrollments</h1>
-          <p className="text-slate-600">Manage student course enrollments.</p>
+          <h1 className="text-2xl font-bold text-primary-950">Enrollments</h1>
+          <p className="text-primary-600">Manage student course enrollments.</p>
         </div>
         <Button onClick={() => setDialogOpen(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -159,7 +162,7 @@ export function EnrollmentsPage() {
                   ))}
                   {(!enrollments || enrollments.length === 0) && (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-center text-slate-500">
+                      <TableCell colSpan={5} className="text-center text-primary-500">
                         No enrollments found for this student.
                       </TableCell>
                     </TableRow>

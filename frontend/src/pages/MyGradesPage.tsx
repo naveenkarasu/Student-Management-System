@@ -23,34 +23,34 @@ export function MyGradesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">My Grades</h1>
-        <p className="text-slate-600">View your academic performance and grade visualizations.</p>
+        <h1 className="text-2xl font-bold text-primary-950">My Grades</h1>
+        <p className="text-primary-600">View your academic performance and grade visualizations.</p>
       </div>
 
       {gpa && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-slate-600">Cumulative GPA</CardTitle>
+              <CardTitle className="text-sm font-medium text-primary-600">Cumulative GPA</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold text-slate-900">{gpa.gpa.toFixed(2)}</p>
+              <p className="text-3xl font-bold text-primary-950">{gpa.gpa.toFixed(2)}</p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-slate-600">Total Credits</CardTitle>
+              <CardTitle className="text-sm font-medium text-primary-600">Total Credits</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold text-slate-900">{gpa.totalCredits}</p>
+              <p className="text-3xl font-bold text-primary-950">{gpa.totalCredits}</p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-slate-600">Total Grade Points</CardTitle>
+              <CardTitle className="text-sm font-medium text-primary-600">Total Grade Points</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold text-slate-900">{gpa.totalGradePoints.toFixed(1)}</p>
+              <p className="text-3xl font-bold text-primary-950">{gpa.totalGradePoints.toFixed(1)}</p>
             </CardContent>
           </Card>
         </div>
@@ -132,7 +132,7 @@ export function MyGradesPage() {
 
       {(!grades || grades.length === 0) && (
         <Card>
-          <CardContent className="py-12 text-center text-slate-500">
+          <CardContent className="py-12 text-center text-primary-500">
             No grades available yet. Check back after your courses are graded.
           </CardContent>
         </Card>
