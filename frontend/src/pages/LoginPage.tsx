@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { GraduationCap, LogIn } from 'lucide-react';
+import { FloatingShapes } from '@/components/three/FloatingShapes';
 
 const demoAccounts = [
   { username: 'admin', password: 'admin123', role: 'ADMIN' as const, description: 'Full access to all features' },
@@ -52,12 +53,13 @@ export function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#faf5ff] px-4 relative overflow-hidden">
+      <FloatingShapes />
       <div className="w-full max-w-md space-y-6">
         <div className="text-center">
           <GraduationCap className="mx-auto h-12 w-12 text-primary-600" />
-          <h1 className="mt-4 text-3xl font-bold text-gray-900">Student Management System</h1>
-          <p className="mt-2 text-sm text-gray-600">Sign in to your account</p>
+          <h1 className="mt-4 text-3xl font-bold text-slate-900">Student Management System</h1>
+          <p className="mt-2 text-sm text-slate-600">Sign in to your account</p>
         </div>
 
         <Card>
@@ -112,14 +114,14 @@ export function LoginPage() {
                 <button
                   key={account.username}
                   onClick={() => handleDemoLogin(account)}
-                  className="flex w-full items-center justify-between rounded-lg border border-gray-200 p-3 text-left transition-colors hover:bg-gray-50"
+                  className="flex w-full items-center justify-between rounded-lg border border-slate-200 p-3 text-left transition-colors hover:bg-purple-50"
                 >
                   <div>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-slate-900">
                       {account.username}{' '}
-                      <span className="text-xs text-gray-500">/ {account.password}</span>
+                      <span className="text-xs text-slate-500">/ {account.password}</span>
                     </p>
-                    <p className="text-xs text-gray-500">{account.description}</p>
+                    <p className="text-xs text-slate-500">{account.description}</p>
                   </div>
                   <span className="text-xs font-semibold rounded-full bg-primary-100 text-primary-700 px-2 py-0.5">
                     {account.role}

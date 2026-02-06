@@ -64,12 +64,12 @@ function CourseSphere({
       </mesh>
       {hovered && (
         <Html distanceFactor={8} style={{ pointerEvents: 'none' }}>
-          <div className="bg-white border border-gray-200 shadow-lg rounded-md px-3 py-2 text-xs whitespace-nowrap">
-            <p className="font-semibold text-gray-900">{grade.courseName}</p>
-            <p className="text-gray-600">
+          <div className="bg-white border border-slate-200 shadow-lg rounded-md px-3 py-2 text-xs whitespace-nowrap">
+            <p className="font-semibold text-slate-900">{grade.courseName}</p>
+            <p className="text-slate-600">
               Grade: {grade.letterGrade} ({grade.marks}%)
             </p>
-            <p className="text-gray-600">Credits: {grade.credits}</p>
+            <p className="text-slate-600">Credits: {grade.credits}</p>
           </div>
         </Html>
       )}
@@ -110,14 +110,14 @@ function Scene({ grades }: { grades: Grade[] }) {
 export function AcademicOrbit({ grades }: AcademicOrbitProps) {
   if (grades.length === 0) {
     return (
-      <div className="flex items-center justify-center h-64 text-gray-500">
+      <div className="flex items-center justify-center h-64 text-slate-500">
         No grade data available for orbit visualization.
       </div>
     );
   }
 
   return (
-    <div className="w-full h-80 rounded-lg border border-gray-200 bg-white">
+    <div className="w-full h-80 rounded-lg border border-slate-200 bg-white">
       <Canvas camera={{ position: [0, 4, 6], fov: 50 }}>
         <Scene grades={grades} />
       </Canvas>

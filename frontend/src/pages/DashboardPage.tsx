@@ -3,6 +3,7 @@ import { useStudents } from '@/hooks/useStudents';
 import { useCourses } from '@/hooks/useCourses';
 import { useStudentGrades, useStudentGpa } from '@/hooks/useGrades';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { GpaGauge3D } from '@/components/three/GpaGauge3D';
 import { Badge } from '@/components/ui/badge';
 import { Loading } from '@/components/ui/loading';
 import { Users, BookOpen, GraduationCap, BarChart3 } from 'lucide-react';
@@ -17,47 +18,47 @@ function AdminDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-        <p className="text-gray-600">Overview of the student management system.</p>
+        <h1 className="text-2xl font-bold text-slate-900">Admin Dashboard</h1>
+        <p className="text-slate-600">Overview of the student management system.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Total Students</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Total Students</CardTitle>
             <Users className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">{students?.length ?? 0}</p>
+            <p className="text-3xl font-bold text-slate-900">{students?.length ?? 0}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Total Courses</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Total Courses</CardTitle>
             <BookOpen className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">{courses?.length ?? 0}</p>
+            <p className="text-3xl font-bold text-slate-900">{courses?.length ?? 0}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Semesters</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Semesters</CardTitle>
             <GraduationCap className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-3xl font-bold text-slate-900">
               {courses ? new Set(courses.map((c) => c.semester)).size : 0}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Faculty Members</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Faculty Members</CardTitle>
             <BarChart3 className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-3xl font-bold text-slate-900">
               {courses ? new Set(courses.map((c) => c.facultyId)).size : 0}
             </p>
           </CardContent>
@@ -73,16 +74,16 @@ function AdminDashboard() {
           <CardContent>
             <div className="space-y-3">
               {students?.slice(-5).reverse().map((s) => (
-                <div key={s.id} className="flex items-center justify-between border-b border-gray-100 pb-2">
+                <div key={s.id} className="flex items-center justify-between border-b border-slate-100 pb-2">
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{s.firstName} {s.lastName}</p>
-                    <p className="text-xs text-gray-500">{s.email}</p>
+                    <p className="text-sm font-medium text-slate-900">{s.firstName} {s.lastName}</p>
+                    <p className="text-xs text-slate-500">{s.email}</p>
                   </div>
                   <Badge variant="secondary">{s.major}</Badge>
                 </div>
               ))}
               {(!students || students.length === 0) && (
-                <p className="text-sm text-gray-500">No students found.</p>
+                <p className="text-sm text-slate-500">No students found.</p>
               )}
             </div>
           </CardContent>
@@ -95,16 +96,16 @@ function AdminDashboard() {
           <CardContent>
             <div className="space-y-3">
               {courses?.slice(0, 5).map((c) => (
-                <div key={c.id} className="flex items-center justify-between border-b border-gray-100 pb-2">
+                <div key={c.id} className="flex items-center justify-between border-b border-slate-100 pb-2">
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{c.courseCode} - {c.courseName}</p>
-                    <p className="text-xs text-gray-500">{c.semester} | {c.credits} credits</p>
+                    <p className="text-sm font-medium text-slate-900">{c.courseCode} - {c.courseName}</p>
+                    <p className="text-xs text-slate-500">{c.semester} | {c.credits} credits</p>
                   </div>
                   <Badge>{c.currentEnrollment ?? 0}/{c.maxCapacity}</Badge>
                 </div>
               ))}
               {(!courses || courses.length === 0) && (
-                <p className="text-sm text-gray-500">No courses found.</p>
+                <p className="text-sm text-slate-500">No courses found.</p>
               )}
             </div>
           </CardContent>
@@ -127,38 +128,38 @@ function FacultyDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Faculty Dashboard</h1>
-        <p className="text-gray-600">Welcome, {user?.username}. Here are your assigned courses.</p>
+        <h1 className="text-2xl font-bold text-slate-900">Faculty Dashboard</h1>
+        <p className="text-slate-600">Welcome, {user?.username}. Here are your assigned courses.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">My Courses</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">My Courses</CardTitle>
             <BookOpen className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">{myCourses.length}</p>
+            <p className="text-3xl font-bold text-slate-900">{myCourses.length}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Total Enrollment</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Total Enrollment</CardTitle>
             <Users className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-3xl font-bold text-slate-900">
               {myCourses.reduce((sum, c) => sum + (c.currentEnrollment ?? 0), 0)}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Semesters</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Semesters</CardTitle>
             <GraduationCap className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-3xl font-bold text-slate-900">
               {new Set(myCourses.map((c) => c.semester)).size}
             </p>
           </CardContent>
@@ -172,16 +173,16 @@ function FacultyDashboard() {
         <CardContent>
           <div className="space-y-3">
             {myCourses.map((c) => (
-              <div key={c.id} className="flex items-center justify-between border-b border-gray-100 pb-2">
+              <div key={c.id} className="flex items-center justify-between border-b border-slate-100 pb-2">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{c.courseCode} - {c.courseName}</p>
-                  <p className="text-xs text-gray-500">{c.semester} | {c.credits} credits</p>
+                  <p className="text-sm font-medium text-slate-900">{c.courseCode} - {c.courseName}</p>
+                  <p className="text-xs text-slate-500">{c.semester} | {c.credits} credits</p>
                 </div>
                 <Badge variant="secondary">{c.currentEnrollment ?? 0}/{c.maxCapacity} enrolled</Badge>
               </div>
             ))}
             {myCourses.length === 0 && (
-              <p className="text-sm text-gray-500">No courses assigned.</p>
+              <p className="text-sm text-slate-500">No courses assigned.</p>
             )}
           </div>
         </CardContent>
@@ -204,39 +205,49 @@ function StudentDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Student Dashboard</h1>
-        <p className="text-gray-600">Welcome, {user?.username}. Here is your academic summary.</p>
+        <h1 className="text-2xl font-bold text-slate-900">Student Dashboard</h1>
+        <p className="text-slate-600">Welcome, {user?.username}. Here is your academic summary.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Cumulative GPA</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Cumulative GPA</CardTitle>
             <BarChart3 className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">{gpa?.gpa?.toFixed(2) ?? '0.00'}</p>
+            <p className="text-3xl font-bold text-slate-900">{gpa?.gpa?.toFixed(2) ?? '0.00'}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Total Credits</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Total Credits</CardTitle>
             <BookOpen className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">{gpa?.totalCredits ?? 0}</p>
+            <p className="text-3xl font-bold text-slate-900">{gpa?.totalCredits ?? 0}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Courses Completed</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-600">Courses Completed</CardTitle>
             <GraduationCap className="h-5 w-5 text-primary-600" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-gray-900">{grades?.length ?? 0}</p>
+            <p className="text-3xl font-bold text-slate-900">{grades?.length ?? 0}</p>
           </CardContent>
         </Card>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>GPA Overview</CardTitle>
+          <CardDescription>Your cumulative grade point average</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <GpaGauge3D gpa={gpa?.gpa ?? 0} />
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -245,13 +256,13 @@ function StudentDashboard() {
         <CardContent>
           <div className="space-y-3">
             {grades?.slice(-5).reverse().map((g) => (
-              <div key={g.id} className="flex items-center justify-between border-b border-gray-100 pb-2">
+              <div key={g.id} className="flex items-center justify-between border-b border-slate-100 pb-2">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{g.courseCode} - {g.courseName}</p>
-                  <p className="text-xs text-gray-500">{g.semester}</p>
+                  <p className="text-sm font-medium text-slate-900">{g.courseCode} - {g.courseName}</p>
+                  <p className="text-xs text-slate-500">{g.semester}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">{g.marks}%</span>
+                  <span className="text-sm text-slate-600">{g.marks}%</span>
                   <Badge variant={g.letterGrade === 'A' ? 'success' : g.letterGrade === 'F' ? 'destructive' : 'secondary'}>
                     {g.letterGrade}
                   </Badge>
@@ -259,7 +270,7 @@ function StudentDashboard() {
               </div>
             ))}
             {(!grades || grades.length === 0) && (
-              <p className="text-sm text-gray-500">No grades available yet.</p>
+              <p className="text-sm text-slate-500">No grades available yet.</p>
             )}
           </div>
         </CardContent>

@@ -65,10 +65,10 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
       )} />
       <div className="flex-1">
         <p className="text-sm font-semibold">{toast.title}</p>
-        {toast.description && <p className="text-sm text-gray-500 mt-1">{toast.description}</p>}
+        {toast.description && <p className="text-sm text-slate-500 mt-1">{toast.description}</p>}
       </div>
       <button onClick={() => onRemove(toast.id)} className="shrink-0">
-        <X className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+        <X className="h-4 w-4 text-slate-400 hover:text-slate-600" />
       </button>
     </div>
   );

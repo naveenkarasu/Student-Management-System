@@ -81,8 +81,8 @@ export function EnrollmentsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Enrollments</h1>
-          <p className="text-gray-600">Manage student course enrollments.</p>
+          <h1 className="text-2xl font-bold text-slate-900">Enrollments</h1>
+          <p className="text-slate-600">Manage student course enrollments.</p>
         </div>
         <Button onClick={() => setDialogOpen(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -159,7 +159,7 @@ export function EnrollmentsPage() {
                   ))}
                   {(!enrollments || enrollments.length === 0) && (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-center text-gray-500">
+                      <TableCell colSpan={5} className="text-center text-slate-500">
                         No enrollments found for this student.
                       </TableCell>
                     </TableRow>

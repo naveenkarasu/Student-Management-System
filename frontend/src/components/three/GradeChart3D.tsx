@@ -74,14 +74,14 @@ function Scene({ grades }: { grades: Grade[] }) {
 export function GradeChart3D({ grades }: GradeChart3DProps) {
   if (grades.length === 0) {
     return (
-      <div className="flex items-center justify-center h-64 text-gray-500">
+      <div className="flex items-center justify-center h-64 text-slate-500">
         No grade data available for 3D chart.
       </div>
     );
   }
 
   return (
-    <div className="w-full h-80 rounded-lg border border-gray-200 bg-white">
+    <div className="w-full h-80 rounded-lg border border-slate-200 bg-white">
       <Canvas camera={{ position: [0, 5, 8], fov: 50 }}>
         <Scene grades={grades} />
       </Canvas>

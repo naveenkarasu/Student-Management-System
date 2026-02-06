@@ -90,13 +90,13 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:z-auto',
+          'fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:z-auto',
           open ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200 lg:hidden">
-          <span className="font-semibold text-gray-900">Menu</span>
-          <button onClick={onClose} className="rounded-md p-2 hover:bg-gray-100">
+        <div className="flex h-16 items-center justify-between px-4 border-b border-slate-200 lg:hidden">
+          <span className="font-semibold text-slate-900">Menu</span>
+          <button onClick={onClose} className="rounded-md p-2 hover:bg-purple-50">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -118,7 +118,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                   'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                   isActive
                     ? 'bg-primary-50 text-primary-700'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    : 'text-slate-600 hover:bg-purple-50/50 hover:text-slate-900'
                 )
               }
             >
@@ -129,9 +129,9 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </nav>
 
         <div className="absolute bottom-4 left-4 right-4">
-          <div className="rounded-lg bg-gray-50 p-3">
-            <p className="text-xs text-gray-500">Logged in as</p>
-            <p className="text-sm font-medium text-gray-900">{user?.username}</p>
+          <div className="rounded-lg bg-purple-50/30 p-3">
+            <p className="text-xs text-slate-500">Logged in as</p>
+            <p className="text-sm font-medium text-slate-900">{user?.username}</p>
             <p className="text-xs text-primary-600">{user?.role}</p>
           </div>
         </div>

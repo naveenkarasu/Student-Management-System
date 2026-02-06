@@ -10,7 +10,7 @@ export function Loading({ className, text = 'Loading...' }: LoadingProps) {
   return (
     <div className={cn('flex flex-col items-center justify-center py-12', className)}>
       <Loader2 className="h-8 w-8 animate-spin text-primary-600" />
-      <p className="mt-2 text-sm text-gray-500">{text}</p>
+      <p className="mt-2 text-sm text-slate-500">{text}</p>
     </div>
   );
 }

@@ -187,8 +187,8 @@ export function CoursesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Courses</h1>
-          <p className="text-gray-600">
+          <h1 className="text-2xl font-bold text-slate-900">Courses</h1>
+          <p className="text-slate-600">
             {isAdmin ? 'Manage courses in the system.' : 'View available courses.'}
           </p>
         </div>
@@ -244,7 +244,7 @@ export function CoursesPage() {
               ))}
               {(!courses || courses.length === 0) && (
                 <TableRow>
-                  <TableCell colSpan={isAdmin ? 7 : 6} className="text-center text-gray-500">
+                  <TableCell colSpan={isAdmin ? 7 : 6} className="text-center text-slate-500">
                     No courses found.
                   </TableCell>
                 </TableRow>
